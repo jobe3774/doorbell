@@ -15,7 +15,7 @@ import os
 import logging
 import argparse
 
-from raspend.application import RaspendApplication
+from raspend import RaspendApplication
 from GPIOSwitch import GPIOSwitch
 
 def main():
@@ -34,7 +34,7 @@ def main():
 
     try:
         # A relay is controlled via GPIO pin #12, which in turn controls the power supply of my bell transformer.
-        doorBell = GPIOSwitch(GPIO.BOARD, 12, GPIO.HIGH, False, False)
+        doorBell = GPIOSwitch(GPIO.BOARD, 36, GPIO.HIGH, False, False)
 
         myApp = RaspendApplication(args.port)
 

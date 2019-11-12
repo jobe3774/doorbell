@@ -1,1 +1,1 @@
-raspend==1.2.3
+raspend==2.0.1
