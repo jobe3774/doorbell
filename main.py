@@ -26,6 +26,7 @@ def main():
     # Check commandline arguments.
     cmdLineParser = argparse.ArgumentParser(prog="doorbell", usage="%(prog)s [options]")
     cmdLineParser.add_argument("--port", help="The port the server should listen on", type=int, required=True)
+    cmdLineParser.add_argument("--gpio", help="The GPIO pin to use", type=int, required=True)
 
     try: 
         args = cmdLineParser.parse_args()
@@ -33,8 +34,8 @@ def main():
         return
 
     try:
-        # A relay is controlled via GPIO pin #12, which in turn controls the power supply of my bell transformer.
-        doorBell = GPIOSwitch(GPIO.BOARD, 12, GPIO.HIGH, False, False)
+        # A relay is controlled via GPIO pin, which in turn controls the power supply of my bell transformer.
+        doorBell = GPIOSwitch(GPIO.BOARD, args.gpio, GPIO.HIGH, False, False)
 
         myApp = RaspendApplication(args.port)
 
